@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.JonathanxD:krypt:1.0.2")
+    implementation("com.github.JonathanxD:krypt:1.0.3")
 }
 ```
 
