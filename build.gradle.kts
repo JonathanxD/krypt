@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.5.20"
     id("com.github.hierynomus.license") version "0.16.1"
+    `maven-publish`
     application
 }
 
