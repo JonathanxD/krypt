@@ -49,6 +49,9 @@ fun ByteArray.loadPrivateKey(passphrase: String): PGPPrivateKey {
 infix fun PGPPrivateKey.and(publicKey: PGPPublicKey): Pair<PGPPrivateKey, PGPPublicKey> =
     this to publicKey
 
+infix fun PGPPublicKey.and(privateKey: PGPPrivateKey): Pair<PGPPrivateKey, PGPPublicKey> =
+    privateKey to this
+
 fun ByteArray.sign(
     publicKey: PGPPublicKey,
     privateKey: PGPPrivateKey,
