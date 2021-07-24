@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.github.jonathanxd"
-version = "1.0-SNAPSHOT"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -31,4 +31,24 @@ tasks.withType<KotlinCompile>() {
 tasks.withType<nl.javadude.gradle.plugins.license.License> {
     header = rootProject.file("LICENSE")
     strictCheck = true
+}
+
+val sourcesJar by tasks.registering(Jar::class) {
+    classifier = "sources"
+    from(sourceSets.main.get().allSource)
+}
+
+publishing {
+    repositories {
+        maven {
+            // change to point to your repo, e.g. http://my.org/repo
+            url = uri("$buildDir/repo")
+        }
+    }
+    publications {
+        register("mavenKotlin", MavenPublication::class) {
+            from(components["kotlin"])
+            artifact(sourcesJar.get())
+        }
+    }
 }
